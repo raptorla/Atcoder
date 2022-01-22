@@ -1,32 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int main()
-{
-    int N;
-    cin >> N >> Q;
-    vector<long long> a(200010);
-    vector<long long> x(200010);
-    vector<long long> k(200010);
-
+int main(void){
+    // Your code here!
+    int N, Q;
+    cin  >> N >> Q;
+    
+    map<int, vector<int> > keep;
+    
+    
+    int a;
     for(int i=0; i<N; i++){
-        cin >> a[i];
+        cin >> a;
+        keep[a].push_back(i);
     }
-    for(int i=0; i<N; i++){
-        cin >> x[i] >> k[i];
-    }
-    double ans = 0;
-
-    for(int i=0; i<N; i++){
-        if(H[i] > ans){
-            ans = H[i];
+    
+    
+    int x,y;
+    for(int i=0; i<Q; i++){
+        cin >> x >> y;
+        if(keep[x].size() >= y){
+            cout << keep[x][y-1]+1 << endl;
         }
-        else if(H[i]==ans){
-            break;
+        else{
+            cout << "-1" << endl;
         }
-
-        
     }
-    cout << ans << endl;
-    return 0;
+    
 }
